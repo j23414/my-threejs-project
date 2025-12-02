@@ -1,0 +1,29 @@
+{
+  "name": "my-threejs-project",
+  "version": "1.0.0",
+  "description": "trying out vite, vitest, threejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j23414/my-threejs-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/j23414/my-threejs-project/issues"
+  },
+  "homepage": "https://github.com/j23414/my-threejs-project#readme",
+  "dependencies": {
+    "lil-gui": "^0.21.0",
+    "three": "^0.181.2"
+  },
+  "devDependencies": {
+    "vite": "^7.2.6",
+    "vitest": "^4.0.14"
+  }
+}
