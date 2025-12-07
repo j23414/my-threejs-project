@@ -17,7 +17,6 @@ export default class ProteinViewer
       return instance
     }
     instance = this
-    console.log("Create ProteinViewer")
     this.canvas = canvas
 
     // Allow access from Console, for debugging
@@ -27,7 +26,7 @@ export default class ProteinViewer
     this.timer = new Timer()
     this.scene = new THREE.Scene()
     this.resources = new Resources(sources)
-    this.camera = new Camera(0, 0, 25)
+    this.camera = new Camera(30, 0, 30)
     this.renderer = new Renderer()
     this.world = new World()
 
