@@ -1,5 +1,6 @@
 import * as THREE from 'three'
-import ProteinViewer from "../ProteinViewer.js";
+import ProteinViewer from "../ProteinViewer.js"
+import Environment from './Environment.js'
 
 export default class World
 {
@@ -10,9 +11,11 @@ export default class World
 
     const testMesh = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshBasicMaterial({ wireframe: true })
+        new THREE.MeshStandardMaterial()
     )
     this.scene.add(testMesh)
+
+    this.environment = new Environment(5, 5, 5)
   }
 
   update(){
