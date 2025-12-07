@@ -1,11 +1,18 @@
 import * as THREE from 'three'
 import Sizes from './Utils/Sizes.js'
 import Timer from './Utils/Timer.js'
+import Camera from './Camera.js'
 
+let instance = null
 export default class ProteinViewer
 {
   constructor(canvas)
   {
+    if(instance)
+    {
+      return instance
+    }
+    instance = this
     console.log("Create ProteinViewer")
     this.canvas = canvas
 
@@ -14,6 +21,8 @@ export default class ProteinViewer
 
     this.sizes = new Sizes()
     this.timer = new Timer()
+    this.scene = new THREE.Scene()
+    this.camera = new Camera(0, 0, 25)
 
     this.sizes.on('resize', () =>
     {
@@ -26,10 +35,10 @@ export default class ProteinViewer
   }
   resize()
   {
-    // Resize event
+    this.camera.resize()
   }
   update()
   {
-    // Update event, particularly for animations
+    this.camera.update()
   }
 }
