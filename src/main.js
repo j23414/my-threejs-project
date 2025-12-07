@@ -1,3 +1,4 @@
+import './styles.css'
 import ProteinViewer from './ProteinViewer/ProteinViewer.js'
 
 const proteinViewer = new ProteinViewer(document.getElementById('webgl-canvas'))
