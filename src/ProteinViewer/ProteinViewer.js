@@ -4,6 +4,8 @@ import Timer from './Utils/Timer.js'
 import Camera from './Camera.js'
 import Renderer from './Renderer.js'
 import World from './World/World.js'
+import Resources from './Utils/Resources.js'
+import sources from './sources.js'
 
 let instance = null
 export default class ProteinViewer
@@ -24,6 +26,7 @@ export default class ProteinViewer
     this.sizes = new Sizes()
     this.timer = new Timer()
     this.scene = new THREE.Scene()
+    this.resources = new Resources(sources)
     this.camera = new Camera(0, 0, 25)
     this.renderer = new Renderer()
     this.world = new World()

@@ -8,6 +8,7 @@ export default class World
   {
     this.proteinViewer = new ProteinViewer()
     this.scene = this.proteinViewer.scene
+    this.resources = this.proteinViewer.resources
 
     const testMesh = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
