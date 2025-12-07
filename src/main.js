@@ -1,155 +1,159 @@
-import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import GUI from 'lil-gui'
-import './styles.css'
-import { createScene } from './scene.js'
-// import { PDBLoader } from 'three/examples/jsm/loaders/PDBLoader.js'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
+import ProteinViewer from './ProteinViewer/ProteinViewer.js'
 
-/**
- * Loaders
- */
-//const pdbLoader = new PDBLoader()
-const dracoLoader = new DRACOLoader()
-dracoLoader.setDecoderPath('/my-threejs-project/draco/')
+const proteinViewer = new ProteinViewer(document.getElementById('webgl-canvas'))
 
-const gltfLoader = new GLTFLoader()
-gltfLoader.setDRACOLoader(dracoLoader)
-
-// Get canvas
-const canvas = document.getElementById('webgl-canvas')
-
-// Create scene, camera, renderer
-const { scene, camera, renderer, controls } = createScene(canvas)
-
-// Debug GUI
-const gui = new GUI()
-const debugSettings = {
-    backgroundColor: '#000000',
-    rotationSpeed: 0.01
-}
-
-gui.addColor(debugSettings, 'backgroundColor').name('Background').onChange((value) => {
-    scene.background = new THREE.Color(value)
-})
-
-//gui.add(debugSettings, 'rotationSpeed', 0, 0.1, 0.001).name('Rotation Speed')
+// import * as THREE from 'three'
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+// import GUI from 'lil-gui'
+// import './styles.css'
+// import { createScene } from './scene.js'
+// // import { PDBLoader } from 'three/examples/jsm/loaders/PDBLoader.js'
+// import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+// import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
 // /**
-//  * Models
+//  * Loaders
 //  */
-// const haGroup = new THREE.Group()
-// pdbLoader.load(
-//     '/my-threejs-project/models/6WCR.pdb',
-//     (pdb) => {
-//         console.log('success')
-//         //console.log(pdb)
-//         const geometryAtoms = pdb.geometryAtoms;
-//         const geometryBonds = pdb.geometryBonds;
+// //const pdbLoader = new PDBLoader()
+// const dracoLoader = new DRACOLoader()
+// dracoLoader.setDecoderPath('/my-threejs-project/draco/')
 
-//         // Atoms as points
-//         // TODO: Use spheres instead
-//         const atomMaterial = new THREE.PointsMaterial({
-//             size: 1,
-//             vertexColors: true, // uses color attribute in geometryAtoms if present
-//         });
-//         const atoms = new THREE.Points(geometryAtoms, atomMaterial);
-//         haGroup.add(atoms);
+// const gltfLoader = new GLTFLoader()
+// gltfLoader.setDRACOLoader(dracoLoader)
 
-//         // Bonds as lines
-//         const bondMaterial = new THREE.LineBasicMaterial({ color: 0xffffff });
-//         const bonds = new THREE.LineSegments(geometryBonds, bondMaterial);
-//         haGroup.add(bonds);
+// // Get canvas
+// const canvas = document.getElementById('webgl-canvas')
 
-//         // Try to center molecule
-//         const box = new THREE.Box3().setFromObject(haGroup);
-//         const center = new THREE.Vector3();
-//         box.getCenter(center);
-//         haGroup.position.sub(center);
+// // Create scene, camera, renderer
+// const { scene, camera, renderer, controls } = createScene(canvas)
 
-//         // Add to scene
-//        // scene.add(haGroup)
+// // Debug GUI
+// const gui = new GUI()
+// const debugSettings = {
+//     backgroundColor: '#000000',
+//     rotationSpeed: 0.01
+// }
+
+// gui.addColor(debugSettings, 'backgroundColor').name('Background').onChange((value) => {
+//     scene.background = new THREE.Color(value)
+// })
+
+// //gui.add(debugSettings, 'rotationSpeed', 0, 0.1, 0.001).name('Rotation Speed')
+
+// // /**
+// //  * Models
+// //  */
+// // const haGroup = new THREE.Group()
+// // pdbLoader.load(
+// //     '/my-threejs-project/models/6WCR.pdb',
+// //     (pdb) => {
+// //         console.log('success')
+// //         //console.log(pdb)
+// //         const geometryAtoms = pdb.geometryAtoms;
+// //         const geometryBonds = pdb.geometryBonds;
+
+// //         // Atoms as points
+// //         // TODO: Use spheres instead
+// //         const atomMaterial = new THREE.PointsMaterial({
+// //             size: 1,
+// //             vertexColors: true, // uses color attribute in geometryAtoms if present
+// //         });
+// //         const atoms = new THREE.Points(geometryAtoms, atomMaterial);
+// //         haGroup.add(atoms);
+
+// //         // Bonds as lines
+// //         const bondMaterial = new THREE.LineBasicMaterial({ color: 0xffffff });
+// //         const bonds = new THREE.LineSegments(geometryBonds, bondMaterial);
+// //         haGroup.add(bonds);
+
+// //         // Try to center molecule
+// //         const box = new THREE.Box3().setFromObject(haGroup);
+// //         const center = new THREE.Vector3();
+// //         box.getCenter(center);
+// //         haGroup.position.sub(center);
+
+// //         // Add to scene
+// //        // scene.add(haGroup)
+// //     }
+// // );
+
+// // // Come back and debug later
+// // gui.add(haGroup.rotation, 'x').min(0).max(Math.PI * 2).name("rotate x")
+// // gui.add(haGroup.rotation, 'y').min(0).max(Math.PI * 2).name("rotate y")
+// // gui.add(haGroup.rotation, 'z').min(0).max(Math.PI * 2).name("rotate z")
+
+// // gui.add(haGroup.position, 'x').min(-50).max(50).step(1).name("position x")
+// // gui.add(haGroup.position, 'y').min(-50).max(50).step(1).name("position y")
+// // gui.add(haGroup.position, 'z').min(-50).max(50).step(1).name("position z")
+
+// gltfLoader.load(
+//     '/my-threejs-project/models/H1N1_6WCR.glb',
+//     (gltf) =>
+//     {
+//         console.log('ran gltf loader')
+//         const model = gltf.scene
+//         scene.add(model)
+
+//         // Compute bounding box
+//         const box = new THREE.Box3().setFromObject(model)
+//         const center = new THREE.Vector3()
+//         box.getCenter(center)
+
+//         // Move model so it's centered at the origin
+//         model.position.sub(center)
+
+//         //// Optional: normalize size to something reasonable
+//         const size = box.getSize(new THREE.Vector3()).length()
+//         const desiredSize = 50 // tweak for your scene scale
+//         const scale = desiredSize / size
+//         model.scale.setScalar(scale)
+
+//         // If your controls have a target, retarget to origin
+//         controls.target.set(0, 0, 0)
+//         controls.update()
+
+//         console.log('GLB loaded, box:', box, 'scale:', scale)
+//         //scene.add(gltf.scene)
+//     },
+//     undefined,
+//     (error) => {
+//         console.error('Error loading GLB', error)
 //     }
-// );
+// )
 
-// // Come back and debug later
-// gui.add(haGroup.rotation, 'x').min(0).max(Math.PI * 2).name("rotate x")
-// gui.add(haGroup.rotation, 'y').min(0).max(Math.PI * 2).name("rotate y")
-// gui.add(haGroup.rotation, 'z').min(0).max(Math.PI * 2).name("rotate z")
+// // Add lights
+// const ambientLight = new THREE.AmbientLight(0xffffff, 2)
+// scene.add(ambientLight)
 
-// gui.add(haGroup.position, 'x').min(-50).max(50).step(1).name("position x")
-// gui.add(haGroup.position, 'y').min(-50).max(50).step(1).name("position y")
-// gui.add(haGroup.position, 'z').min(-50).max(50).step(1).name("position z")
+// const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
+// directionalLight.position.set(5, 5, 5)
+// scene.add(directionalLight)
 
-gltfLoader.load(
-    '/my-threejs-project/models/H1N1_6WCR.glb',
-    (gltf) =>
-    {
-        console.log('ran gltf loader')
-        const model = gltf.scene
-        scene.add(model)
+// // Animation loop
+// function animate() {
+//     //requestAnimationFrame(animate)
 
-        // Compute bounding box
-        const box = new THREE.Box3().setFromObject(model)
-        const center = new THREE.Vector3()
-        box.getCenter(center)
+//     // Rotate cube
+//     // cube.rotation.x += debugSettings.rotationSpeed
+//     // cube.rotation.y += debugSettings.rotationSpeed
+//     // haGroup.rotation.x += debugSettings.rotationSpeed
+//     // haGroup.rotation.y += debugSettings.rotationSpeed
 
-        // Move model so it's centered at the origin
-        model.position.sub(center)
+//     // Update controls
+//     controls.update()
 
-        //// Optional: normalize size to something reasonable
-        const size = box.getSize(new THREE.Vector3()).length()
-        const desiredSize = 50 // tweak for your scene scale
-        const scale = desiredSize / size
-        model.scale.setScalar(scale)
+//     // Render
+//     renderer.render(scene, camera)
+//     window.requestAnimationFrame(animate)
+// }
 
-        // If your controls have a target, retarget to origin
-        controls.target.set(0, 0, 0)
-        controls.update()
+// // Handle window resize
+// window.addEventListener('resize', () => {
+//     camera.aspect = window.innerWidth / window.innerHeight
+//     camera.updateProjectionMatrix()
+//     renderer.setSize(window.innerWidth, window.innerHeight)
+//     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+// })
 
-        console.log('GLB loaded, box:', box, 'scale:', scale)
-        //scene.add(gltf.scene)
-    },
-    undefined,
-    (error) => {
-        console.error('Error loading GLB', error)
-    }
-)
-
-// Add lights
-const ambientLight = new THREE.AmbientLight(0xffffff, 2)
-scene.add(ambientLight)
-
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
-directionalLight.position.set(5, 5, 5)
-scene.add(directionalLight)
-
-// Animation loop
-function animate() {
-    //requestAnimationFrame(animate)
-
-    // Rotate cube
-    // cube.rotation.x += debugSettings.rotationSpeed
-    // cube.rotation.y += debugSettings.rotationSpeed
-    // haGroup.rotation.x += debugSettings.rotationSpeed
-    // haGroup.rotation.y += debugSettings.rotationSpeed
-
-    // Update controls
-    controls.update()
-
-    // Render
-    renderer.render(scene, camera)
-    window.requestAnimationFrame(animate)
-}
-
-// Handle window resize
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight
-    camera.updateProjectionMatrix()
-    renderer.setSize(window.innerWidth, window.innerHeight)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-})
-
-// Start animation
-animate()
+// // Start animation
+// animate()
