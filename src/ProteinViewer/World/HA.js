@@ -32,4 +32,9 @@ export default class HA {
     model.scale.setScalar(scale)
     return model
   }
+
+  update()
+  {
+    this.model.rotation.y += 0.0005 * this.timer.delta
+  }
 }

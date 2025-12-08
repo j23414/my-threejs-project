@@ -25,6 +25,10 @@ export default class World
   }
 
   update(){
+    if(this.ha)
+    {
+      this.ha.update()
+    }
     // Update
   }
 }
