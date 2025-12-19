@@ -46,6 +46,7 @@ function encodeSequence2(sequence, fill_length=0) {
                 case 'g': value = 0.75; break;
                 case 't': value = 1.0; break;
             }
+            //value=i
         }
 
         encoded[i] = value;
@@ -100,9 +101,10 @@ export default class DnaIcon {
                 void main() {
                     // vUv = uv;
                     vec4 modelPosition = modelViewMatrix * vec4(position, 1.0);
-                    modelPosition.z +=aDNA*0.05;
+                    //modelPosition.z +=aDNA/7000.0;
                     vec4 viewPosition = viewMatrix * modelPosition;
                     vec4 projectionPosition = projectionMatrix * viewPosition;
+                    gl_PointSize = 0.01;
                     gl_Position = projectionPosition;
                     vDNA=aDNA;
                 }
@@ -112,6 +114,7 @@ export default class DnaIcon {
 
                 // varying vec2 vUv;
                 varying float vDNA;
+                //uniform vec3 uLightDir;
 
                 vec3 getBaseColor(float base) {
                     // if (base > 0.1 && base < 0.3 ) return vec3(1.0, 0.0, 0.0);     // A = Red
@@ -133,10 +136,24 @@ export default class DnaIcon {
 
                     colorR = vDNA;
                     colorG = 0.0;
-                    colorB = 1.0-vDNA;
+                    colorB = 1.0;
 
                     //gl_FragColor = vec4(colorR, colorG, colorB, 1.0);
                     gl_FragColor = vec4(getBaseColor(vDNA), 1.0);
+
+                    // vec3 uLightDir=vec3(1, 0, 1);
+
+                    // vec2 p = gl_PointCoord * 2.0 - 1.0;
+                    // float r2 = dot(p, p);
+                    // if (r2 > 1.0) discard;
+                    // float z = sqrt(1.0 - r2);
+                    // vec3 normal = normalize(vec3(p.x, p.y, z));
+                    // float diffuse = max(dot(normal, normalize(uLightDir)), 0.0);
+                    // float ambient = 0.25;
+                    // float edge = 1.0 - smoothstep(1.0 - fwidth(r2), 1.0, r2);
+                    // vec3 color = getBaseColor(vDNA) * (ambient + diffuse);
+                    // gl_FragColor = vec4(getBaseColor(vDNA), edge);
+
                 }
             `
         });
