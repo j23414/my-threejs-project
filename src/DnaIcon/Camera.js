@@ -1,15 +1,15 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import ProteinViewer from "./ProteinViewer.js"
+import DnaIcon from "./DnaIcon.js"
 
 export default class Camera
 {
   constructor(x=6, y=4, z=8)
   {
-    this.proteinViewer = new ProteinViewer()
-    this.sizes = this.proteinViewer.sizes
-    this.scene = this.proteinViewer.scene
-    this.canvas = this.proteinViewer.canvas
+    this.dnaIcon = new DnaIcon()
+    this.sizes = this.dnaIcon.sizes
+    this.scene = this.dnaIcon.scene
+    this.canvas = this.dnaIcon.canvas
 
     this.setInstance(x, y, z)
     this.setOrbitControls()

@@ -26,6 +26,7 @@ export default class Resources extends EventEmitter
     this.loaders.dracoLoader = new GLTFLoader() // Will be modified for draco compressed
     this.loaders.textureLoader = new THREE.TextureLoader()
     this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader()
+    this.reader = new FileReader();
 
     // const pdbLoader = new PDBLoader()
     // Draco says "RAWR!"
@@ -78,6 +79,11 @@ export default class Resources extends EventEmitter
           }
         )
       }
+      // else if(source.type === 'fasta')
+      // {
+      //   this.reader.readAsText(file);
+
+      // }
     }
   }
 

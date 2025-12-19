@@ -1,15 +1,15 @@
 import * as THREE from 'three'
-import ProteinViewer from "./ProteinViewer.js"
+import DnaIcon from "./DnaIcon.js"
 
 export default class Renderer
 {
   constructor()
   {
-    this.proteinViewer = new ProteinViewer()
-    this.canvas = this.proteinViewer.canvas
-    this.sizes = this.proteinViewer.sizes
-    this.scene = this.proteinViewer.scene
-    this.camera = this.proteinViewer.camera
+    this.dnaIcon = new DnaIcon()
+    this.canvas = this.dnaIcon.canvas
+    this.sizes = this.dnaIcon.sizes
+    this.scene = this.dnaIcon.scene
+    this.camera = this.dnaIcon.camera
 
     this.setInstance()
   }
